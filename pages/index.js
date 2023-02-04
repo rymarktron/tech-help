@@ -19,6 +19,9 @@ export default function Home() {
     console.log(text);
   };
 
+  //ask user level of experience. 
+  const [experience, setExperience] = useState(null);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -40,27 +43,38 @@ export default function Home() {
 
         <p className={styles.description}>
           Welcome to {app_title}, a place to share how to use tech for all ages. 
-          <br/>
           The reality is learning technology can be difficult. It is a site that can answer any question
-          all in one place. 
-          <br/>Have a question, write it below and 
-          we&apos;ll give step-by-step instructions.
-        </p>
-
-        <p className={styles.description}>
-          Some common questions:
+          all in one place. Have a question, write it below and 
+          we&apos;ll give step-by-step instructions. 
+          <br/>
+          <br/>
+          Some common questions asked here are:
           <br/>
           1. How do I check and change my Facebook account from public to private?
           <br/>
           2. My phone storage says it&apos;s full. What can I do?
           <br/>
           3. How do I Facetime someone with my iPhone?
-        </p> 
+          <br/>
+          You can ask anything
+        </p>
 
-        <div className={styles.description}>
-          <h3>Enter a question:</h3>
+        <div className={styles.form}>
+          <h3>How would you describe your experience with technology?</h3>
+          <h5>Beginner is never used before, intermediate is used but still unfamiliar.
+          Expert is know what you are doing but would like some guidance</h5>
+          <button onClick={() => setExperience('Beginner')}>Beginner</button>
+          <button onClick={() => setExperience('Intermediate')}>Intermediate</button>
+          <button onClick={() => setExperience('Expert')}>Expert</button>
+          { experience && <p>Your experience with technology is: {experience}</p> }
+        </div>
+
+        <br/>
+
+        <div className={styles.form}>
+          <h3>Enter your question below and click submit when done:</h3>
           <form onSubmit={handleSubmit}>
-            <textarea value={text} onChange={handleChange} />
+            <textarea rows="4" cols="50" value={text} onChange={handleChange} />
             <br/>
             <button type="submit">Submit</button>
           </form>
