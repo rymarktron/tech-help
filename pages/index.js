@@ -76,7 +76,13 @@ export default function Home() {
           <form onSubmit={handleSubmit}>
             <textarea rows="4" cols="50" value={text} onChange={handleChange} />
             <br/>
-            <button type="submit">Submit</button>
+            <button 
+              type="submit" 
+              
+            
+            >
+              Submit
+            </button>
           </form>
         </div>
         
@@ -89,9 +95,9 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Made with 💜 and{' '}
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image src="/laptop-logo.svg" alt="Vercel Logo" width={30} height={16} />
           </span>
         </a>
       </footer>
