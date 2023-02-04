@@ -1,59 +1,73 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
-  //Use state and begin with empty.
-  const [prompt, setPrompt] = useState("");
+  var app_title = "Techknowledgy";
 
-  //Function that changes
+  //concacanate variable to send to prompt:
+  var prepare = "Write step by step instructions on how to address this issue: ";
+  const [text, setText] = useState('');
+
   const handleChange = (event) => {
-    setPrompt(event.target.value);
+    setText(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(text);
   };
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Tech For Me</title>
+        <title>{app_title}</title>
         <meta name="description" content="App for hack for the future event" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
+          <Image
+          src="laptop-logo.svg"
+          alt="Logo"
+          width={120}
+          height={80}
+        />
         <h1 className={styles.title}>
-          ExplainMy.Tech
+          {app_title}
         </h1>
 
         <p className={styles.description}>
-          &#47;&#47;Welcome to explainmy.tech, a place to share how to use tech for all ages. 
+          Welcome to {app_title}, a place to share how to use tech for all ages. 
+          <br/>
           The reality is learning technology can be difficult. It is a site that can answer any question
-          all in one place. Have a question, write it below and 
+          all in one place. 
+          <br/>Have a question, write it below and 
           we&apos;ll give step-by-step instructions.
         </p>
 
-        <p>Some common questions:
-        </p>
+        <p className={styles.description}>
+          Some common questions:
+          <br/>
+          1. How do I check and change my Facebook account from public to private?
+          <br/>
+          2. My phone storage says it&apos;s full. What can I do?
+          <br/>
+          3. How do I Facetime someone with my iPhone?
+        </p> 
 
-        <ol type="A">
-          <li>How do I change my Facebook account to private</li>
-          <li>My phone storage says full. How can I transfer the photos out?</li>
-          <li>Milk</li>
-        </ol>  
-
-        <p>Enter an issue you are experiencing with below:</p>
-
-        <div>
-          <input type="text" onChange={handleChange} />
-          <p>The value entered is: {prompt}</p>
+        <div className={styles.description}>
+          <h3>Enter a question:</h3>
+          <form onSubmit={handleSubmit}>
+            <textarea value={text} onChange={handleChange} />
+            <br/>
+            <button type="submit">Submit</button>
+          </form>
         </div>
         
-        <p>Find in-depth information about Next.js features and API.</p>
-
-        <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Render &rarr;</h2>
-        </a>
       </main>
+      
 
       <footer className={styles.footer}>
         <a
@@ -72,6 +86,8 @@ export default function Home() {
 }
 
 /*
+&#47;&#47;
+<p>The value entered is: {prompt}</p>
 <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Step 1 &rarr;</h2>

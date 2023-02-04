@@ -2,6 +2,8 @@
   padding: 0 2rem;
 }
 
+
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
@@ -51,11 +53,14 @@
 }
 
 .description {
-  margin: 4rem 0;
+  background-color: white;
+  margin-top: 1rem 0;
   line-height: 1.5;
-  font-size: 1.5rem;
-  padding-left: 80px; 
-  padding-right: 80px;
+  font-size: 1rem;
+  margin-left: 60px; 
+  margin-right: 60px;
+  border-radius: 20px;
+  padding: 20px;
 }
 
 .code {

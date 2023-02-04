@@ -1,5 +1,9 @@
 import Image from 'next/image'
 
+//API Key Needed
+require("dotenv").config(); //read the .env file and make it available
+console.log(process.env.COHERE_API_KEY);
+
 const myLoader = ({ src, width, quality }) => {
   return `https://example.com/${src}?w=${width}&q=${quality || 75}`
 }
