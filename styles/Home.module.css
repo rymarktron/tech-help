@@ -28,8 +28,8 @@
   flex-grow: 1;
 }
 
-.title a {
-  color: #0070f3;
+.title {
+  color: #301934;
   text-decoration: none;
 }
 
@@ -42,7 +42,7 @@
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .title,
@@ -54,6 +54,8 @@
   margin: 4rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
+  padding-left: 80px; 
+  padding-right: 80px;
 }
 
 .code {
@@ -113,17 +115,9 @@
     width: 100%;
     flex-direction: column;
   }
+  .description {
+    padding-left: 0px; 
+    padding-right: 0px;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  .card,
-  .footer {
-    border-color: #222;
-  }
-  .code {
-    background: #111;
-  }
-  .logo img {
-    filter: invert(1);
-  }
-}
