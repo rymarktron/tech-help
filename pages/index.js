@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useState, useEffect } from "react";
+import Link from 'next/link';
 
 export default function Home() {
   var app_title = "Techknowledgy";
@@ -31,12 +32,14 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-          <Image
+          <Link href = "https://www.techknowledgy.tech/"><Image
           src="laptop-logo.svg"
           alt="Logo"
           width={120}
           height={80}
         />
+        </Link>
+
         <div className={styles.title}>
           <h1>
             {app_title}
@@ -68,7 +71,7 @@ export default function Home() {
           <button onClick={() => setExperience('Beginner')}>Beginner</button>
           <button onClick={() => setExperience('Intermediate')}>Intermediate</button>
           <button onClick={() => setExperience('Expert')}>Expert</button>
-          { experience && <p>Your experience with technology is: {experience}</p> }
+          { experience && <p>Your experience with technology is: <b>{experience}</b></p> }
         </div>
 
         <br/>
@@ -89,7 +92,6 @@ export default function Home() {
         </div>
         
       </main>
-      
 
       <footer className={styles.footer}>
         <a
