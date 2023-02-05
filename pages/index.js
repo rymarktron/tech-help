@@ -37,9 +37,11 @@ export default function Home() {
           width={120}
           height={80}
         />
-        <h1 className={styles.title}>
-          {app_title}
-        </h1>
+        <div className={styles.title}>
+          <h1>
+            {app_title}
+          </h1>
+        </div>
 
         <p className={styles.description}>
           Welcome to {app_title}, a place to share how to use tech for all ages. 

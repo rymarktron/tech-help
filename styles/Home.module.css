@@ -50,6 +50,15 @@
   text-align: center;
 }
 
+.title h1{
+  font-size: 66px;
+  background: -webkit-radial-gradient(rgba(9,9,121,1), rgba(0,212,255,1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 5px;
+
+}
+
 .description {
   background-color: white;
   line-height: 1.5;
