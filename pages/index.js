@@ -3,25 +3,36 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useState, useEffect } from "react";
 import Link from 'next/link';
+import axios from 'axios';
 
 export default function Home() {
   var app_title = "Techknowledgy";
 
   //concacanate variable to send to prompt:
-  var prepare = "Write step by step instructions on how to address this issue: ";
+  const prepare = "Write numbered instructions on how to address this question";
   const [text, setText] = useState('');
-
-  const handleChange = (event) => {
-    setText(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(text);
-  };
 
   //ask user level of experience. 
   const [experience, setExperience] = useState(null);
+  const [textResponse, setTextResponse] = useState('');
+
+  const answers1 = [
+    "Connect your phone to a computer using a USB cable.",
+    'On the phone, unlock it and allow the computer to access it as a media device.',
+    'On the computer, open the file explorer and find your phone.',
+    'Locate the photos on your phone. The location may vary depending on the phone&apos;s operating system, but commonly it is in the "DCIM" folder.',
+    'Select the photos you want to transfer.',
+    'Copy the selected photos to your computer&apos;s hard drive',
+    'You can choose to save them to a specific folder or the default Pictures folder',
+    'Once the transfer is complete, safely disconnect your phone from the computer.',
+    'Verify that the photos have been transferred to your computer by opening the folder where they were saved.'
+  ];
+
+  const handleSubmit = async (event) => {
+    for (let i = 0; i < answers1.length; i++) {
+      document.write(answers1[i]);
+    }    
+  }
 
   return (
     <div className={styles.container}>
@@ -78,18 +89,19 @@ export default function Home() {
 
         <div className={styles.form}>
           <h3>Enter your question below and click submit when done:</h3>
+
           <form onSubmit={handleSubmit}>
-            <textarea rows="4" cols="50" value={text} onChange={handleChange} />
+            <textarea 
+              rows="4" cols="50" 
+              value={text} 
+              onChange={(event) => setText(event.target.value)} 
+              placeholder={"Write your question here."}  
+              />
             <br/>
-            <button 
-              type="submit" 
-              
-            
-            >
-              Submit
-            </button>
+            <button type="submit">Submit</button>
           </form>
-        </div>
+
+          </div>
         
       </main>
 
@@ -109,36 +121,51 @@ export default function Home() {
   )
 }
 
-/*
-&#47;&#47;
-<p>The value entered is: {prompt}</p>
-<div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Step 1 &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+/*  useEffect(() => {
+    const fetchData = async () => {
+      const res = await callOpenAiApi(prompt);
+      alert(res);
+    };
+    fetchData();
+  }, []);
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Step 2 &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+  const callOpenAiApi = async (prompt) => {
+    try {
+      const response = await axios.post(
+        'https://api.openai.com/v1/engines/text-davinci-003/jobs',
+        {
+          prompt: prompt
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+          }
+        }
+      );
+      return JSON.stringify(response.data);
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  };
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Step 3&rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+    const handleChange = (event) => {
+    setText(event.target.value);
+  };
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Step 4 &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    //create prompt
+    if (experience != null)
+    {
+      let blurb = `${prepare} with analogies meant for a ${experience} in tech: ${text}`;
+    }
+      let blurb = `${prepare}: ${text}`;
+    
+
+    const res = await callOpenAiApi(blurb);
+    alert(res);
+  };
 */
